@@ -6,7 +6,7 @@ use A17\Twill\Models\Behaviors\HasSlug;
 use A17\Twill\Models\Behaviors\HasMedias;
 use A17\Twill\Models\Model;
 
-class Project extends Model 
+class Project extends Model
 {
     use HasSlug, HasMedias;
 
@@ -17,11 +17,11 @@ class Project extends Model
         'headline',
         'url'
     ];
-    
+
     public $slugAttributes = [
         'title',
     ];
-    
+
     public $mediasParams = [
         'screengrab' => [
             'desktop' => [
@@ -32,4 +32,22 @@ class Project extends Model
             ],
         ],
     ];
+
+
+//-------- Mutators & Accessor
+
+    public function getDomainAttribute($value)
+    {
+        return parse_url($this->url)['host'];
+    }
+
+    public function getDescriptionTailwindAttribute($value)
+    {
+        $description_para_class = str_replace('<p>', '<p class="mt-16">', $this->description);
+        return $description_para_class;
+    }
+
+
+
+
 }

@@ -15,7 +15,11 @@ class Project extends Model
         'title',
         'description',
         'headline',
-        'url'
+        'url',
+        'sector',
+        'commercial',
+        'launch_date',
+        'layout'
     ];
 
     public $slugAttributes = [
@@ -23,14 +27,31 @@ class Project extends Model
     ];
 
     public $mediasParams = [
-        'screengrab' => [
-            'desktop' => [
+        'screengrab_desktop' => [
+            'default' => [
                 [
-                    'name' => 'desktop',
-                    'ratio' => 16 / 9,
+                    'name' => 'default',
+                    'ratio' => 640 / 400,
                 ],
             ],
         ],
+        'screengrab_tablet' => [
+            'default' => [
+                [
+                    'name' => 'default',
+                    'ratio' => 375 / 500,
+                ],
+            ],
+        ],
+
+        'screengrab_phone' => [
+            'default' => [
+                [
+                    'name' => 'default',
+                    'ratio' => 190 / 270,
+                ],
+            ],
+        ]
     ];
 
 

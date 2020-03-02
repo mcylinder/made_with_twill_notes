@@ -2,3 +2,7 @@
 *.idea/*
 *.xml
 .DS_Store
+./code/.vagrant/*
+
+/code/.vagrant/machines/madewithtwill/virtualbox/action_set_name
+action_set_name

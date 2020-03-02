@@ -15,4 +15,12 @@ class ProjectRepository extends ModuleRepository
     {
         $this->model = $model;
     }
+
+    public function allProjects()
+    {
+        return $this->model
+            ->published()
+            ->orderBy('title')
+            ->get();
+    }
 }

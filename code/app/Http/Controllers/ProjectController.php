@@ -1,22 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Models\Project;
+use App\Repositories\ProjectRepository;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function __construct(ProjectRepository $repository)
     {
-        $projects = Project::where('published', 1)->get();
-
-        return view('project.index', compact('projects'));
+        $this->repository = $repository;
     }
 
-    public function show($slug = null)
+    public function index()
     {
-        $project = Project::forSlug($slug)->firstOrFail();
+        return view('project.index', [
+            'projects' => $this->repository->allProjects()
+        ]);
+    }
+
+    public function show($slug)
+    {
+        $project = $this->repository->forSlug($slug);
+        abort_unless($project, 404, 'Project ');
 
         return view('project.show', compact('project'));
     }

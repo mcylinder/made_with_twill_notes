@@ -75,7 +75,6 @@
     @formField('wysiwyg', [
         'name' => 'description',
         'label' => 'Project description',
-        'style' => 'border: 2px solid red;',
         'toolbarOptions' => [
         ['header' => [2, 3, false]],
         'bold',
@@ -90,7 +89,6 @@
         'note' => 'Describe some of the challenges.',
  ])
 @stop
-
 
 @section('fieldsets')
     <a17-fieldset id="screengrabs" title="Website Screengrabs" :open="true">
